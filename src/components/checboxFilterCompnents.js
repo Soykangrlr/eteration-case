@@ -63,7 +63,7 @@ const [model,setModel]=useState(models)
       
             <div className="relative">           
                 <CiSearch className="absolute top-1.5 z-999 left-2"/>
-        <input placeholder="seacrh" value={searchText} onChange={(e)=>setSearchText(e.target.value)} className="pl-8 py-1 h-full w-full bg-white"/>
+        <input placeholder="search" value={searchText} onChange={(e)=>setSearchText(e.target.value)} className="pl-8 py-1 h-full w-full bg-white"/>
         </div>
  
        
