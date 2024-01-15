@@ -94,13 +94,13 @@ const ProductSlice = createSlice({
     checkBoxFilterModels:(state,action)=>{
       const {type,filters}=action.payload
 
-      console.log("mdoel çalışstı",filters)
+  
       var filterProducts= state.products.filter(product => filters.includes(product["model"]));
         state.products=filterProducts
     },
     checkBoxFilterBrands:(state,action)=>{
       const {type,filters}=action.payload
-      console.log("br çalışstı")
+      
       var filterProducts= state.products.filter(product => filters.includes(product["brand"]));
         state.products=filterProducts
     },

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 function Basket() {
     const {basket}=useSelector(state=>SelectAllProducts(state))
-    console.log(basket)
+    
     const dispatch=useDispatch()
     function totalPrice(basket){
         return basket.reduce((total, item) => total + item.price * item.count, 0);
