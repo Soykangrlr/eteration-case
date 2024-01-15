@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { SelectAllProducts, addBasket, getProducts, removeBasket, setProductItem } from '../../store/ProductSlice'
 
 function ProductDetail() {
     const {id}=useParams()
     const {products,basket,loading}=useSelector(state=>SelectAllProducts(state))
-    const[product,setProduct]=useState()
+    const[product,setProduct]=useState("detay")
+    const navigate =useNavigate()
  const dispatch=useDispatch()
     useEffect(()=>{
         dispatch(getProducts())
@@ -14,6 +15,7 @@ function ProductDetail() {
     useEffect(()=>{
         getProduct()
     },[id,products])
+  
   function getProduct(){
     if(!loading)
     {
@@ -69,7 +71,7 @@ function ProductDetail() {
 
     return (
         <div className='basis-10/12 bg-white p-5'>
-      { product&&   <div className='flex gap-x-5'>
+      { product ?  <div className='flex gap-x-5'>
             <img src={product.image} />
             <div className='flex flex-col w-full'>
                 <p className='font-semibold text-2xl'>{product.model} {product.brand}</p>
@@ -77,7 +79,9 @@ function ProductDetail() {
                 <Action/>
                 <p className='mt-5'>{product.description}</p>
             </div>
-          </div>}
+          </div>:  <div className='w-full mt-10 flex justify-center items-center'>
+            <p className='md:text-5xl text-xl text-brand font-extrabold'>Ürün bulunamadı</p>
+        </div>}
            
         </div>
     )
